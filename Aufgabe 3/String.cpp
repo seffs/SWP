@@ -23,21 +23,21 @@ String::String(const char* s) {
   while (s[i++]) {
     size++;
   }
-  str = new char[size];
-  str[size] = '\0';
+  str = new char[size + 1];
   for (i=0; i < size; i++){
     str[i] = s[i];
   }
+  str[size] = '\0';
 }
 
 String::String(const String& s) : size(s.size), str(s.str)  {
   //TODO
   size = s.size;
-  str =  new char[size];
-  str[size] = '\0';
+  str =  new char[size + 1];
   for (int i=0; i < size; i++){
     str[i] = s.str[i];
   }
+  str[size] = '\0';
 }
 
 String::String(String&& s) : size(s.size), str(s.str) {
@@ -62,11 +62,11 @@ String& String::operator=(const String& s) {
     return *this; }
   delete[] str;
   size = s.size;
-  str =  new char[size];
-  str[size] = '\0';
-  for (int i=0; i < size; i++){
+  str =  new char[size + 1];
+  for (int i=0; i <= size; i++){
     str[i] = s.str[i];
   }
+  str[size] = '\0';
   return *this;
 }
 
@@ -85,6 +85,19 @@ String& String::operator=(String&& s) {
 
 String& String::operator+=(String& s) {
   //TODO
+  /*char* temp = new char[size + s.size + 1];
+  int i = 0;
+  for (i = 0; i < size; i++) {
+    temp[i] = str[i];
+  }
+  for (int j = 0, i = size; i <= size + s.size; i++, j++) {
+    temp[i] = s.str[j];
+  }
+  temp[size + s.size] = '\0';
+  delete[] str;
+  str = temp;
+  size = size + s.size;
+  return *this;*/
   char* temp = new char[size + s.size + 1];
   int i = 0;
   for (i = 0; i < size; i++) {
@@ -99,7 +112,7 @@ String& String::operator+=(String& s) {
   for (i = 0; i < size + s.size; i++) {
     str[i] = temp[i];
   }
-  str[i] = '\0';
+  str[size + s.size] = '\0';
   delete[] temp;
   size += s.size;
   return *this;
