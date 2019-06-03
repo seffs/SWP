@@ -85,19 +85,6 @@ String& String::operator=(String&& s) {
 
 String& String::operator+=(String& s) {
   //TODO
-  /*char* temp = new char[size + s.size + 1];
-  int i = 0;
-  for (i = 0; i < size; i++) {
-    temp[i] = str[i];
-  }
-  for (int j = 0, i = size; i <= size + s.size; i++, j++) {
-    temp[i] = s.str[j];
-  }
-  temp[size + s.size] = '\0';
-  delete[] str;
-  str = temp;
-  size = size + s.size;
-  return *this;*/
   char* temp = new char[size + s.size + 1];
   int i = 0;
   for (i = 0; i < size; i++) {
