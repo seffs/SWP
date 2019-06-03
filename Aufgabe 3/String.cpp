@@ -90,12 +90,17 @@ String& String::operator+=(String& s) {
   for (i = 0; i < size; i++) {
     temp[i] = str[i];
   }
+  delete[] str;
   for (int j = 0, i = size; i <= size + s.size; i++, j++) {
     temp[i] = s.str[j];
   }
-  temp[size + s.size + 1] = '\0';
-  delete[] str;
-  str = temp;
-  size = size + s.size;
+  temp[size + s.size] = '\0';
+  str = new char[size + s.size + 1];
+  for (i = 0; i < size + s.size; i++) {
+    str[i] = temp[i];
+  }
+  str[i] = '\0';
+  delete[] temp;
+  size += s.size;
   return *this;
 }
