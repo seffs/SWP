@@ -30,7 +30,7 @@ String::String(const char* s) {
   str[size] = '\0';
 }
 
-String::String(const String& s) : size(s.size), str(s.str)  {
+String::String(const String& s) {
   //TODO
   size = s.size;
   str =  new char[size + 1];
