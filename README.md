@@ -1,2 +1,2 @@
-# softwarelabor
+# SWP
 Exploring C/C++
