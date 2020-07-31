@@ -1,2 +1,2 @@
 # softwarelabor
-Softwarelabor Aufgaben
+Exploring C/C++
